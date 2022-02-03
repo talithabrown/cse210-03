@@ -1,3 +1,4 @@
+from mimetypes import guess_all_extensions
 from game.terminal_service import TerminalService
 from game.jumper import Jumper
 from game.drawer import Drawer
@@ -38,11 +39,12 @@ class Director:
             self._do_outputs()
 
     def _get_inputs(self):
-        """Gets and stores inout from the player.
+        """Gets and stores input from the player.
 
         Args:
             self (Director): An instance of Director.
         """
+        self.letter_guessed = self._terminal_service.read_text("What letter would you like to guess? ")
         
         
     def _do_updates(self):
@@ -51,6 +53,13 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
+        updated_word = self._drawer.check_guess(self.letter_guessed)
+        
+        
+        if guess_correct:
+            Jumper.life =- 0
+        else:
+            Jumper.life =- 1
         
         
     def _do_outputs(self):
@@ -59,6 +68,6 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        
+        board = self._
         # if self._hider.is_found():
         #     self._is_playing = False
