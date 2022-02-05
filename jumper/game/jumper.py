@@ -1,4 +1,3 @@
-from game.director import Director
 
 class Jumper:
     """The person playing the game (guessing). 
@@ -15,11 +14,12 @@ class Jumper:
         Args:
             self (Jumper): An instance of Jumper.
         """
-        self.life = 4
+        pass
 
-    def jump(self):
+    def jump(self, lives):
+        print()
 
-        if self.life == 4:
+        if lives == 4:
             print("  _____")
             print(" /_____\\")
             print(" \     /")
@@ -28,7 +28,7 @@ class Jumper:
             print("   /|\\")
             print("   / \\")
             print("\n^^^^^^^^^")
-        if self.life == 3:
+        if lives == 3:
             print(" /_____\\")
             print(" \     /")
             print("  \   /")
@@ -36,22 +36,22 @@ class Jumper:
             print("   /|\\")
             print("   / \\")
             print("\n^^^^^^^^^")
-        if self.life == 2:
+        if lives == 2:
             print(" \     /")
             print("  \   /")
             print("    0")
             print("   /|\\")
             print("   / \\")
             print("\n^^^^^^^^^")
-        if self.life == 1:
+        if lives == 1:
             print("  \   /")
             print("    0")
             print("   /|\\")
             print("   / \\")
             print("\n^^^^^^^^^")
-        if self.life == 0:
+        if lives == 0:
             print("    X")
             print("   /|\\")
             print("   / \\")
             print("\n^^^^^^^^^")
-            Director.is_playing = False
+            
