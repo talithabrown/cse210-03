@@ -53,13 +53,16 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        updated_word = self._drawer.check_guess(self.letter_guessed)
+        Drawer._guessed_word = self._drawer.check_guess(self.letter_guessed)
         
         
-        if guess_correct:
-            Jumper.life =- 0
+        if Drawer._correct:
+            Jumper.life = Jumper.life + 0
         else:
-            Jumper.life =- 1
+            Jumper.life = Jumper.life - 1
+
+        if Jumper.life == 0:
+            self._is_playing = False
         
         
     def _do_outputs(self):
@@ -68,6 +71,10 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        board = self._
-        # if self._hider.is_found():
-        #     self._is_playing = False
+
+        self.A = len(Drawer._guessed_word)
+        while self.A > 0:
+                print(Drawer._guessed_word[self.B])
+                self.A = self.A-1
+
+        Jumper.jump()
