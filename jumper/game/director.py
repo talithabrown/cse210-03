@@ -54,8 +54,15 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
+        while True:
+            try:
+                self.letter_guessed = self._terminal_service.read_text("Guess a letter [a-z]: ")
+                if self.letter_guessed.isalpha() == False:
+                    raise ValueError
+                break
 
-        self.letter_guessed = self._terminal_service.read_text("Guess a letter [a-z]: ")
+            except ValueError:
+                print("You must choose a letter in the alphabet")
         
         
     def _do_updates(self):
